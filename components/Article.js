@@ -86,8 +86,74 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Dumbest Boi to Ever Live',
+    date: 'Aug 25th, 1996',
+    firstParagraph: `We're no strangers to love, You know the rules and so do I, A full commitment's what I'm thinking of, You wouldn't get this from any other guy`,
+    secondParagraph: `Iiiiiiiiiiii just wanna tell you how I'm feeling, gotta make you understand`,
+    thirdParagraph: `Never gonna give you up,    Never gonna let you down,    Never gonna run around and desert you,    Never gonna make you cry,    Never gonna say goodbye,    Never gonna tell a lie and hurt you`,
   }
 ];
+
+
+function articleMaker(artObj){
+  
+
+  const div = document.createElement("div");
+  const title = document.createElement("h2");
+  const date = document.createElement("p");
+  const para = document.createElement("p");
+  const para2 = document.createElement("p");
+  const para3 = document.createElement("p");
+  const span = document.createElement("span");
+  
+  div.appendChild(title)
+  div.appendChild(date);
+  div.appendChild(para)
+  div.appendChild(para2)
+  div.appendChild(para3)
+  div.appendChild(span)
+  
+  div.classList.add('article');
+  date.classList.add('date');
+  span.classList.add('expandButton')
+
+  title.textContent = artObj.title;
+  date.textContent = artObj.date;
+  para.textContent = artObj.firstParagraph;
+  para2.textContent = artObj.secondParagraph;
+  para3.textContent = artObj.thirdParagraph;
+
+
+  div.addEventListener('click', event => {
+    div.classList.toggle('article-open')
+  });
+  return div;
+}
+
+const divArticle = data.map(newArt => {
+  const article = articleMaker(newArt)
+  return article;
+})
+
+
+const articles = document.querySelector(".articles");
+divArticle.forEach(article => {
+  articles.appendChild(article)
+})
+// console.log(articleMaker(data))
+// const divElements = data.map(elObj => {
+//     const el = articleMaker(elObj)
+//     return el;
+// })
+
+// divElements.forEach(el => {
+//   accor
+
+// })
+
+
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
